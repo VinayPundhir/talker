@@ -1,0 +1,110 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/static/min.js"></script>
+{% include 'body.html'%}
+</head>
+<body style="background-color:#333333;height:100%">
+<div style="background-color:black;overflow:auto"><a class="btn" href="/friends/" style="background-color:orange;color:white;margin:1px">Back</a>
+<a class="btn" href="/video_call/{{f_name}}" style="background-color:;color:white;margin:1px;float:right"><i style="color:white;font-size:24px" class="fa">&#xf03d;</i></a>
+</div></br>
+<center><div style="height:80%;;overflow: auto;" id="chats"></div></center>
+
+
+<script>
+size="";
+
+
+function  show() {
+
+      $.ajax({
+        url: '/json/{{f_name}}',
+        data: {
+          'username': 'user'
+        },
+        dataType: 'json',
+        success: function (data) {
+      var i; 
+      size=data.obj.length;
+      for(i=0;i<=data.obj.length;i++){
+         if(data.obj[i]['name']== data.user ){
+                       
+                             if(data.obj[i]['image'] != "" ){
+         $('<div  ></div></br>').html("<img style='margin-left:130px;height:50%;width:50%' src='"+data.obj[i]['image']+"' />").appendTo('#chats');}
+
+             if(data.obj[i]['msg'] != "" )
+          $('<div style="overflow:hidden;overflow:;clear:both;margin-left:100px;width:80%;height:auto" class="container1" ></div></br>').html(data.obj[i]['msg']).appendTo('#chats'); 
+ 
+ }
+
+
+  if(data.obj[i]['name']==data.f_name ){
+                               if(data.obj[i]['image'] != "" ){
+         $('<div  ></div></br>').html("<img style='margin-right:130px;height:50%;width:50%' src='"+data.obj[i]['image']+"' />").appendTo('#chats');}
+        
+
+
+           if(data.obj[i]['msg'] != "" ){
+          $('<div style="min-height:10%;overflow:hidden;clear:both;;margin-right:100px;width:80%;" class="container2" ></div></br>').html(data.obj[i]['msg']).appendTo('#chats'); }
+
+ }
+            
+          }
+      }
+
+})
+         
+ }
+
+
+function check(){
+   $.ajax({
+        url: '/chat_size/{{f_name}}',
+        data: {
+          'username': 'user'
+        },
+        dataType: 'json',
+        success: function (data) {
+            if(size == data.size){ }
+   else{ $('#chats').html("");
+         show();};
+
+       }
+   })
+}
+
+
+
+setInterval(check,1000);
+show();
+
+</script>
+<center><form action="/chatting_process/{{f_name}}" method="post" id="login-form" enctype="multipart/form-data">
+{% csrf_token %}
+
+  <div class="form-row" stylr="display:blocked">
+    
+    
+<input id="f" maxlength="254" name="image"  type="file" placeholder="Image" style="width:0px;height:0px">
+<input onclick="get()" value="open" type="button" style="font-size:40%;height:10%;width:5%" />
+    
+    <input style="height:10%;width:75%;;opacity:0.8;font-size:200%" placeholder="..." autofocus="" id="id_username" maxlength="137"  name="msg" type="text"/>
+  
+  <input type="submit" value="ok" style="height:10%;width:5%;font-size:40%"/>
+    <label>&nbsp;</label>
+</form>
+<script>
+ function get(){
+var file =document.getElementById('f');
+file.click();
+}
+
+
+
+
+
+</script>
+</body>
+</html>

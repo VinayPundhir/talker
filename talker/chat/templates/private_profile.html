@@ -1,0 +1,19 @@
+<html>
+<head>
+
+{% load staticfiles %}
+
+</head>
+<body>
+
+<div style="background-color:grey;width:500px;border-radius:30px;height:60px">
+<a href=" " style="margin-left:20px;color:orange">{{ request.session.name}}</a> 
+
+<a href=" ">
+{% for n in image %}
+<img src="{{ n.image.url }}" alt="Image is not available"  style="float:left;border-radius: 140px;opacity:0.9;height:55px;width:55px;margin-right:50px" />
+<a href="/show/" style="margin-right:5px">Send request</a>
+</div></br>
+{% endfor %}
+</body>
+</html>

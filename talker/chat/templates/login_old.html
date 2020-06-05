@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Log in | Django site admin</title>
+{% load staticfiles %}
+
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'login_files/base.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'login_files/login.css' %}">
+<head>
+<link rel='stylesheet' href="{% static 'css/bootstrap.min.css' %}" type="text/css" >
+
+
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" login" data-admin-utc-offset="0">
+
+<!-- Container -->
+<div id="container">
+
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        
+<h1 id="site-name">Login</h1>
+
+        </div>
+        
+        
+    </div>
+    <!-- END Header -->
+    
+    
+
+    
+        
+    
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        
+        
+
+
+
+
+<div id="content-main">
+
+
+
+<form action="/login_process/" method="post" id="login-form" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="form-row">
+    
+    <label class="required" for="id_username">Username:</label> <input autofocus="" id="id_username" maxlength="254" name="username" required="" type="text">
+  </div>
+  <div class="form-row">
+    
+    <label class="required" for="id_password">Password:</label> <input id="id_password" name="password" required="" type="password">
+    <input name="next" value="/admin/" type="hidden">
+  </div>
+ <div class="form-row">
+    
+    
+  
+  
+  <div class="submit-row">
+    <label>&nbsp;</label><input value="Login" type="submit"/><input  type="button" onclick="sinup()" value="sinup" style="margin:5px"/>
+<script>
+function sinup(){
+window.location="/sinup/";
+}
+</script>
+
+ <p style="color:red">{{ checking }}</p>
+
+  </div>
+</form>
+
+</div>
+
+        
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+
+
+</body></html>

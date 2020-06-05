@@ -1,0 +1,33 @@
+<center>{% include "body.html" %}
+
+<div style="height:90%;overflow: auto;">
+</br>
+</br>
+</br>
+</br>
+{% for n in obj%}
+
+{% if n.name == request.session.name %}
+<div class="container" style="margin-left:100px"><p style="color:pink">Me</p>
+<h style="color:orange">{{ n.msg}}</h>
+</div></br></br>
+{% endif %}
+{% if n.name == f_name %}
+<div style="margin-right:100px" class="container"><img src="{{ f_img }}" alt="Image is not available"  style="color:navy;float:left;border-radius: 140px;opacity:0.9;height:55px;width:55px;margin-right:50px" /><p style="color:pink;margin-left:15px"></p>
+<center><h style="color:green">{{ n.msg}}</h></center>
+</div></br>
+{% endif%}
+{% endfor %}
+</br>
+</div>
+<form action="/chatting_process/{{f_name}}" method="post" id="login-form" >
+{% csrf_token %}
+
+  <div class="form-row" stylr="display:blocked">
+    
+    <label class="required" for="id_username" ></label> <input style="height:50px;width:600px;margin-left:5px;opacity:0.8;font-size:15px" placeholder="Write something..." autofocus="" id="id_username" maxlength="137" name="msg" required="" type="text"/>
+  
+    <label>&nbsp;</label><input value="Ok" type="submit" style="height:50px;width:80px">
+</form>
+</body></center>
+</html>

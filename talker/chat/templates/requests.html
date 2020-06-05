@@ -1,0 +1,33 @@
+{% extends "index.html"%}
+{% block content %}
+
+{% include "body.html" %}
+
+
+{% if obj %}
+{% for n in obj %}
+
+
+<div class="container" style="height:100px;width:150%"><img src="{{ n.image.url }}" alt="Image is not available"  style="opacity:0.9;height:55px;width:55px;"/>
+ <i style="color:orange">{{ n.name}} </i><b style="font-size:50px;color:{{ n.color }}">.</b>
+  <div style="float:right;margin-top:4%">
+
+<a href="/accept_request/{{n.name}}" style="margin:0px" class="btn" href="/requests/">
+<input type="button"  value="accept" />
+</a>
+
+<a href="/decline_request/{{n.name}}" style="margin:0px"class="btn" href="/requests/">
+<input type="button" value="decline" />
+</a>
+
+</div>
+</div></br></br></br>
+{% endfor %}
+{% endif %}
+{% if not obj %}
+<div  style="height:100px;width:150%"class="container"><i style="color:orange">0 friend requests </i></div>
+{% endif %}
+</body>
+</html>
+{% endblock%}
+

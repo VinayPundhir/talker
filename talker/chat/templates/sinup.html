@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+
+  <title>CodePen - Login</title>
+
+    <link rel="stylesheet" href="/static/lstyle.css" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+  <html lang="en-US">
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>Register</title>
+
+  
+    <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+ <![endif]-->
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div id="login">
+
+        <form action="/sinup_process/" method="post" id="login-form" enctype="multipart/form-data">{% csrf_token %}
+
+          <fieldset class="clearfix">
+
+            <p><span class="fontawesome-user"></span><input autofocus="" id="id_username" maxlength="254" name="username" required="" type="text" placeholder="Username" ></p> <!-- JS because of IE support; better: placeholder="Username" -->
+            <p><span class="fontawesome-lock"></span><input id="id_password" name="password" required="" type="password"  placeholder="Password"></p> <!-- JS because of IE support; better: placeholder="Password" -->
+
+ <p><span class="fontawesome-user"></span><input autofocus="" id="id_username" maxlength="254" name="name" required="" type="text"  placeholder="Name" ></p> <!-- JS because of IE support; better: placeholder="Name" -->
+
+ <p><span class="fontawesome-user"></span><input autofocus="" id="id_username" maxlength="254" name="age" required="" type="text" placeholder="Age" ></p> <!-- JS because of IE support; better: placeholder="Age" -->
+
+ <p><span class="fontawesome-user"></span><input autofocus="" id="id_username" maxlength="254" name="image" required="" type="file" placeholder="Image" ></p> <!-- JS because of IE support; better: placeholder="Image" -->
+          <i style="color:orange">{{checking}}</i>  <p><input type="submit" value="Done"></p>
+
+          </fieldset>
+
+        </form>
+
+       
+
+      </div> <!-- end login -->
+
+    </div>
+
+  </body>
+</html>
+
+</body>
+
+</html>
+
+
+

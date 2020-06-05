@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+{% include "body.html"%}
+{% for n in obj %}
+
+
+
+<div class="container" style="height:100px;width:150%"><img src="{{ n.image.url }}" alt="Image is not available"  style="opacity:0.9;height:55px;width:55px;"/>
+ <i style="color:orange">{{ n.name}} </i><b style="font-size:50px;color:{{ n.color }}">.</b>
+
+{% if n.sent %}
+ <a href="/all_users/"  style="float:right" class="btn" >
+ <input type="button" style="background-color:red" value="Request Sent" /></a> 
+ </div></br>
+{% endif %}
+
+
+{% if  n.friend %}
+ <a href="/all_users/"  style="float:right" class="btn" >
+ <input type="button" style="background-color:orange"value="Friend" /></a> 
+ </div></br>
+{% endif %}
+
+{% if not n.sent and not n.friend %}
+ {% if n.name == request.session.name %}
+   <a href="/send_request/{{n.name}}"  style="float:right" class="btn" >
+   <input type="button" value="Me"  style="background-color:green"/></a> 
+   </div></br>
+ {% endif %}
+  
+ {% if n.name != request.session.name %}
+   <a href="/send_request/{{n.name}}"  style="float:right" class="btn" >
+   <input type="button" value="Send Request" /></a> 
+   </div></br>
+  {% endif %}
+
+{%endif%}
+
+{% endfor %}
+
+
+{% endblock%}
