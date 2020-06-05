@@ -5,6 +5,5 @@
 -> python 2.7 
 -> Django 1.10.8
 
-# if hosting online make some changes in  talker/test5/settings.py file 
-
-  allowed=["127.0.0.1" , "add_link_of_online_domain_here" ] 
+# if hosting online add domain name in  talker/test5/settings.py file 
+  ALLOWED_HOSTS =["127.0.0.1" , "new_domain_name"]  
