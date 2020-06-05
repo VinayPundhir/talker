@@ -1,7 +1,8 @@
 # Talker
 
 #quick demo
-https://picaso.pythonanywhere.com
+ https://vinaypundhir.github.io/talker/
+
 
 
 #Talker is a social media webapp made with python and django
