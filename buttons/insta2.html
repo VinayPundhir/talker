@@ -1,0 +1,57 @@
+<style>
+button{
+   margin-top:5%;
+   color:white;
+   background:red;
+   width:80px;
+   height:80px;
+   border-radius:100%;
+   box-shadow:20px;
+}
+
+
+
+button:hover{
+
+animation-name:example;
+animation-duration:3s;
+background:green;
+transform: rotate(90deg)
+
+}
+
+.div{
+	 margin-top:10%;
+ background:grey;
+ width:90px;
+ height:90px;
+ border-radius:100%;
+ 
+}
+
+
+
+
+
+@keyframes example{
+0% { transform:rotate(0deg);
+     background:red;}
+50% {transform:rotate(360deg);
+    background:orange;}
+
+100%{
+    transform:rotate(90deg);
+    background:green
+  } 
+}
+</style>
+<body>
+
+<center>
+<div class="div">
+<button>
+  <div style="border:10px soild grey;width:20px;height:10px; background:grey">.</div>
+</button>
+</div>
+
+</body>
