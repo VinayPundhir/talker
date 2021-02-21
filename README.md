@@ -1,7 +1,7 @@
 # Talker
 
 #quick demo
- https://vinaypundhir.github.io/talker/
+ https://ankittomar/pythonanywhere.com
 
 
 
