@@ -1,7 +1,7 @@
 # Talker
 
 #quick demo
- https://mychattingapp.pythonanywhere.com/chatting/Other
+ https://mychattingapp.pythonanywhere.com
 
 
 
