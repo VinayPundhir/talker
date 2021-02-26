@@ -1,4 +1,4 @@
-# Talker
+# Talker.
 
 #quick demo
  https://mychattingapp.pythonanywhere.com
