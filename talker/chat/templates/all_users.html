@@ -1,42 +1,52 @@
 {% extends 'index.html' %}
 {% block content %}
-{% include "body.html"%}
+<!--{% include "body.html"%}-->
+
+</br>
+</br>
+</br>
+<div class="container" style="background-color:white;;";>
 {% for n in obj %}
 
 
 
-<div class="container" style="height:100px;width:150%"><img src="{{ n.image.url }}" alt="Image is not available"  style="opacity:0.9;height:55px;width:55px;"/>
- <i style="color:orange">{{ n.name}} </i><b style="font-size:50px;color:{{ n.color }}">.</b>
+
+
+<div class="jumbotron pills" style="box-shadow:1px 2px #f2f2f2">
+ <img src="{{ n.image.url }}" class="img img-circle" alt="Image is not available"  style="opacity:0.9;height:55px;width:55px;"/>
+ <span style="font-family:verdana;color:grey" >{{ n.name}} </span><b style="font-size:50px;color:{{ n.color }}">.</b>
 
 {% if n.sent %}
  <a href="/all_users/"  style="float:right" class="btn" >
- <input type="button" style="background-color:red" value="Request Sent" /></a> 
+ <input type="button" class="btn btn-danger"  style="" value="Request Sent" /></a>
  </div></br>
 {% endif %}
 
 
 {% if  n.friend %}
- <a href="/all_users/"  style="float:right" class="btn" >
- <input type="button" style="background-color:orange"value="Friend" /></a> 
- </div></br>
+ <input type="button" class="btn btn-dark text-deafult" style="float:right;" value="Friend" /></a>
+
 {% endif %}
 
 {% if not n.sent and not n.friend %}
  {% if n.name == request.session.name %}
-   <a href="/send_request/{{n.name}}"  style="float:right" class="btn" >
-   <input type="button" value="Me"  style="background-color:green"/></a> 
-   </div></br>
+   <input type="button" class="btn btn-dark text-default" style="float:right;" value="Me"  /></a>
+
  {% endif %}
-  
+
  {% if n.name != request.session.name %}
    <a href="/send_request/{{n.name}}"  style="float:right" class="btn" >
-   <input type="button" value="Send Request" /></a> 
-   </div></br>
+   <input type="button" class="btn btn-dark text-default"  value="Send Request" /></a>
   {% endif %}
+
+
 
 {%endif%}
 
-{% endfor %}
 
+</div>
+
+{% endfor %}
+</div>
 
 {% endblock%}

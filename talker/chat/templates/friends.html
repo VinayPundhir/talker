@@ -1,34 +1,27 @@
 {% extends "index.html"%}
 {% block content %}
 
-{% include "body.html" %}
-
+<!--{% include "body.html" %}-->
+</br>
+</br>
+</br>
+<div class="container" style="background-color:white;;">
 {% if obj %}
 {% for n in obj %}
- 
 
-<div class="container" style="height:100px;width:150%"><img src="{{ n.image.url }}" alt="Image is not available"  style="opacity:0.9;height:55px;width:55px;"/>
- <i style="color:orange">{{ n.name}} </i><b style="font-size:50px;color:{{ n.color }}">.</b>
-<a href="/chatting/{{n.name}}" style="float:right"  class="btn" href="/requests/">
-<input type="button" value="chat" /></a></p> 
+
+<div class="jumbotron " style="box-shadow:1px 2px #f2f2f2"  ><img src="{{ n.image.url }}"  style="opacity:0.9;height:55px;width:55px;" alt="Image is not available" class="img img-circle"/>
+ <span style="font-family:verdana;color:grey">{{ n.name}} </span><b style="font-size:50px;color:{{ n.color }}">.</b>
+ <a href="/chatting/{{n.name}}"><img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3UalgznsHdfFY8uOTfiyhw7LpsVFaCsvPkg&usqp=CAU" placeholder="chat"
+  style="float:right;width:55px;width:55px"  class="img"  href="/requests/" /></a>
 </div>
-
-
-
-
-
-
-
-
-
-</div></br>
+</br>
 {% endfor %}
 {% endif %}
 {% if not obj %}
 <div  style="height:100px;width:150%"class="container"><i style="color:orange">0 friends yet </i></div>
 {% endif %}
+</div>
 
-</body>
-</html>
 {% endblock%}
 

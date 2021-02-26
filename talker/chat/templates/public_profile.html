@@ -1,16 +1,18 @@
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel='stylesheet' href="/static/css/bootstrap.min.css" type="text/css" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/static/min.js"></script>
-{% include 'body.html'%}
+<!--{% include 'body.html'%}-->
 </head>
-<body style="background-color:#333333;height:100%">
-<div style="background-color:black;overflow:auto"><a class="btn" href="/friends/" style="background-color:orange;color:white;margin:1px">Back</a>
-<a class="btn" href="/video_call/{{f_name}}" style="background-color:;color:white;margin:1px;float:right"><i style="color:white;font-size:24px" class="fa">&#xf03d;</i></a>
+<body style="background-color:">
+
+<div style="background-color:black;overflow:auto;padding:10px"><a style="color:white" href="/friends/"  >Back</a>
+<!--<a class="btn" href="/video_call/{{f_name}}" style="background-color:;color:white;margin:1px;float:right"><i style="color:white;font-size:24px" class="fa">&#xf03d;</i></a> -->
 </div></br>
-<center><div style="height:80%;;overflow: auto;" id="chats"></div></center>
+
+<div style="" class="container" id="chats"></div>
 
 
 <script>
@@ -26,36 +28,36 @@ function  show() {
         },
         dataType: 'json',
         success: function (data) {
-      var i; 
+      var i;
       size=data.obj.length;
       for(i=0;i<=data.obj.length;i++){
          if(data.obj[i]['name']== data.user ){
-                       
+
                              if(data.obj[i]['image'] != "" ){
-         $('<div  ></div></br>').html("<img style='margin-left:130px;height:50%;width:50%' src='"+data.obj[i]['image']+"' />").appendTo('#chats');}
+         $('<div  ></div></br>').html("<img style='margin-left:30%;height:50%;width:50%' src='"+data.obj[i]['image']+"' />").appendTo('#chats');}
 
              if(data.obj[i]['msg'] != "" )
-          $('<div style="overflow:hidden;overflow:;clear:both;margin-left:100px;width:80%;height:auto" class="container1" ></div></br>').html(data.obj[i]['msg']).appendTo('#chats'); 
- 
+          $('<button style="float:right;font-family:arial;width:auto;padding:5px;border-radius:20px;padding:12px;border:none" class="bg-primary" ></button></br></br></br>').html(data.obj[i]['msg']).appendTo('#chats');
+
  }
 
 
   if(data.obj[i]['name']==data.f_name ){
                                if(data.obj[i]['image'] != "" ){
-         $('<div  ></div></br>').html("<img style='margin-right:130px;height:50%;width:50%' src='"+data.obj[i]['image']+"' />").appendTo('#chats');}
-        
+         $('<div  ></div></br>').html("<img style='margin-right:30%;height:50%;width:50%' src='"+data.obj[i]['image']+"' />").appendTo('#chats');}
+
 
 
            if(data.obj[i]['msg'] != "" ){
-          $('<div style="min-height:10%;overflow:hidden;clear:both;;margin-right:100px;width:80%;" class="container2" ></div></br>').html(data.obj[i]['msg']).appendTo('#chats'); }
+          $('<button style="float:left;font-family:arial;width:auto;background-color:#f2f2f2;padding:12px;border-radius:20px;border:none" class="text text-muted" ></button></br></br></br>').html(data.obj[i]['msg']).appendTo('#chats'); }
 
  }
-            
+
           }
       }
 
 })
-         
+
  }
 
 
@@ -81,27 +83,43 @@ setInterval(check,1000);
 show();
 
 </script>
-<center><form action="/chatting_process/{{f_name}}" method="post" id="login-form" enctype="multipart/form-data">
-{% csrf_token %}
 
-  <div class="form-row" stylr="display:blocked">
-    
-    
-<input id="f" maxlength="254" name="image"  type="file" placeholder="Image" style="width:0px;height:0px">
-<input onclick="get()" value="open" type="button" style="font-size:40%;height:10%;width:5%" />
-    
-    <input style="height:10%;width:75%;;opacity:0.8;font-size:200%" placeholder="..." autofocus="" id="id_username" maxlength="137"  name="msg" type="text"/>
-  
-  <input type="submit" value="ok" style="height:10%;width:5%;font-size:40%"/>
-    <label>&nbsp;</label>
-</form>
+
+<center>
+
+<div class="container" style="display:blocked">
+ <div class="row" style="border:4px solid #f2f2f2;border-radius:20px">
+   <form action="/chatting_process/{{f_name}}" method="post" id="login-form"  enctype="multipart/form-data">
+   {% csrf_token %}
+
+
+     <input id="f" maxlength="254" name="image"  type="file" placeholder="Image" style="width:0px;height:0px"/>
+     <img onclick="get()" value="open" placeholder="image"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI0-t9KPvTHhyH7cFtQehd1AclTC6ShC7ATg&usqp=CAU"
+      style="opacity:0.9;width:8%;height:8%;" class="img" />
+
+
+
+     <input style="opacity:0.8;height:10%;width:60%;border:none;box-shadow:3px #f2f2f2"  placeholder="    write something" autofocus="" id="id_username" maxlength="137"  name="msg" type="text"/>
+
+  <input type="submit"  style="width:0px;height:0px;visibility:hidden" id='sendme'/>
+   <img onclick="send()"  placeholder="image"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnvGNIapBzFlAIb94j1mPcILHHyTtkUPNMKg&usqp=CAU"
+     style="opacity:0.9;width:10%;height:10%;transform:rotate(47deg)" class="img" />
+  </form>
+ </div>
+</div>
+
+
+
 <script>
  function get(){
 var file =document.getElementById('f');
 file.click();
 }
 
-
+ function send(){
+var file =document.getElementById('sendme');
+file.click();
+}
 
 
 
