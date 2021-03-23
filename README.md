@@ -1,9 +1,11 @@
 # Talker
 
-#### quick demo
+#### Live @ https://mychattingapp.pythonanywhere.com
 
-- https://mychattingapp.pythonanywhere.com
 
+
+
+![Screenshot_20210323-225337](https://user-images.githubusercontent.com/51248042/112190151-bea60b00-8c2a-11eb-93b9-dadb31e5cacb.png)
 
 
 #### Talker is a social media webapp made with python and django
